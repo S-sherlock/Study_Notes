@@ -1,0 +1,81 @@
+# JavaScript循环
+## for循环:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>for循环</title>
+</head>		
+<body>
+
+<script>
+cars=["BMW","Volvo","Saab","Ford"];
+for (var i=0;i<cars.length;i++){
+	document.write(cars[i] + "<br>");
+}
+</script>
+
+</body>
+</html>
+
+/*
+运行结果:
+    BMW
+    Volvo
+    Saab
+    Ford
+*/
+```
+
+从上面的例子中，您可以看到：
+
+- Statement 1 在循环开始之前设置变量 (var i=0)。
+
+- Statement 2 定义循环运行的条件（i 必须小于 5）。
+
+- Statement 3 在每次代码块已被执行后增加一个值 (i++)。
+
+通常我们会使用语句 1 初始化循环中所用的变量 (var i=0)。
+
+语句 1 是可选的，也就是说不使用语句 1 也可以。
+
+您可以在语句 1 中初始化任意（或者多个）值：
+```JavaScript
+for (var i=0,len=cars.length; i<len; i++)
+{ 
+    document.write(cars[i] + "<br>");
+}
+```
+
+另一种写法
+```JavaScript
+<!DOCTYPE html>
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0,len=cars.length;
+for (; i<len; ){
+	document.write(cars[i] + "<br>");
+	i++;
+}
+```
+
+## for .. in 循环
+
+```JavaScript
+function myFunction(){
+	var x;
+	var txt="";
+	var person={fname:"Bill",lname:"Gates",age:56}; 
+	for (x in person){
+		txt=txt + person[x] + "</br>";
+	}
+	document.getElementById("demo").innerHTML=txt;
+}
+
+/*输出:
+BillGates56
+*/
+```
+
+---
+**while循环,do/while 同python,不再赘述.**
