@@ -33,6 +33,22 @@ type字段的作用是返回这个表的名字, 这个字段在数据库中不�
 下面写方法的时候前面加 get_  就可以，这样就得到我们需要的数据了.
 然后把它添加到fields中.
 
+还有一种情况，需要获取关联表里面的一些字段（正向查询）
+
+下面代码表示`product`作为外键存在于`StockAccount`中，需要用到`product`中的`alias`字段和`account_no`字段，可以使用正向查询。
+```python
+class StockAccountSerializer(serializers.ModelSerializer):
+    product_account_no = serializers.SerializerMethodField()
+
+    def get_product_account_no(self, obj):
+        if obj.product:
+            return obj.product.alias + obj.account_no
+            
+    class Meta:
+        model = StockAccount
+        fields = ['product_account_no']
+```
+
 
 在此方法里需要调用序列化器，我们直接调用即可，
 ```
